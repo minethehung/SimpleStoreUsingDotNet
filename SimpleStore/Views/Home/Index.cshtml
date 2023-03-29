@@ -1,0 +1,29 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to my store</h1>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Add to cart</th>
+        </tr>
+    </thead>
+        <tbody>
+        @foreach(var p in @Model)
+        {
+            <tr>
+                <td>@p.Name</td>
+                <td>@p.Price</td>
+                <td>@p.Quantity</td>
+                <td><a asp-action="Add" asp-controller="Cart" asp-route-id="@p.Id">Add</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

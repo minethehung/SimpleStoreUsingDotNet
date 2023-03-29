@@ -1,0 +1,25 @@
+﻿@model List<OrderDetail>
+@{
+    ViewData["Title"] = "OrderDetail";
+}
+
+<h1>Order Detail</h1>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+    </tr>
+    @foreach(var od in Model)
+    {
+        <tr>
+            <td>@od.Product.Name</td>
+            <td>@od.Price</td>
+            <td>@od.Quantity</td>
+            <td>@(od.Price * od.Quantity)</td>
+        </tr>
+    }
+</table>
+<a asp-controller="Order" asp-action="Index">Back to my orders</a>
+

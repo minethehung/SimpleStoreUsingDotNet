@@ -1,0 +1,22 @@
+﻿@model List<Order>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>My Orders</h1>
+<table class="table">
+    <tr>
+        <th>Time</th>
+        <th>Total</th>
+        <th>View detail</th>
+    </tr>
+    @foreach(var o in Model)
+    {
+        <tr>
+            <td>@o.DreatedDate</td>
+            <td>@o.Total</td>
+            <td><a asp-action="OrderDetail" asp-controller="Order" asp-route-id="@o.Id">View</a></td>
+        </tr>
+    }
+</table>
+

@@ -1,0 +1,41 @@
+﻿@model List<CartItemVM>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Your cart</h1>
+    <a asp-action="Index" asp-controller="Home">Go back to home page</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Remove from cart</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in @Model)
+            {
+                <tr>
+                    <td>@p.Name</td>
+                    <td>@p.Price</td>
+                    <td>
+                        <a class="btn btn-secondary" asp-action="Update" asp-controller="Cart" asp-route-id="@p.Id" asp-route-quan="-1">-</a>
+                        @p.Quantity
+                        <a class="btn btn-secondary" asp-action="Update" asp-controller="Cart" asp-route-id="@p.Id" asp-route-quan="1">+</a>
+                    </td>
+                    <td>@p.Total</td>
+                    <td><a asp-action="Remove" asp-controller="Cart" asp-route-id="@p.Id">Remove</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Checkout" asp-controller="Order" class="btn btn-primary">Checkout</a>
+    @if (TempData["EmptyCart"] != null)
+    {
+        <span class="text-danger"> @TempData["EmptyCart"]</span>
+    }
+</div>

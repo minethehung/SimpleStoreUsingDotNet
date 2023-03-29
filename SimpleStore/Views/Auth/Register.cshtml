@@ -1,0 +1,17 @@
+﻿@model LoginVM
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1 class="text-center">Register</h1>
+<form method="post">
+    <label asp-for="@Model.Username"></label>
+    <input type="text" asp-for="@Model.Username" class="form-control" />
+    <span asp-validation-for="@Model.Username" class="text-danger"></span>
+    <br />
+    <label asp-for="@Model.Password"></label>
+    <input type="password" asp-for="@Model.Password" class="form-control" />
+    <span asp-validation-for="@Model.Password" class="text-danger"></span>
+    <br />
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
